@@ -25,6 +25,9 @@ class Board:
     def __repr__(self):
         return f"{self.data.__repr__()}\n"
 
+    def __eq__(self, other: object) -> bool:
+        return self.data == other.data and self.marked == other.marked
+
 
 if __name__ == "__main__":
     boards = []
@@ -51,3 +54,12 @@ if __name__ == "__main__":
                 winning_board = board
                 
     print(f"Part 1: {winning_board.score()}")
+
+    boards_won = []    
+    for number in numbers:
+        for iboard, board in list(enumerate(boards))[::-1]:
+            board.mark(number)
+            if board.check():                
+                boards_won.append(boards.pop(iboard))
+                  
+    print(f"Part 2: {boards_won[-1].score()}")
