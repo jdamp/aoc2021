@@ -22,7 +22,5 @@ for i, instruction in enumerate(instructions.split("\n")):
     if i == 0:
         print("Part 1:", paper.sum())
 np.set_printoptions(linewidth=200)
-paper = paper.astype(object)
-paper[paper == 0] = "."
-paper[paper == 1] = "#"
-print(paper.T)
+print(np.array2string(paper.T, separator="", 
+                      formatter={'int': lambda x: ' ' if x==0 else '█'}))
