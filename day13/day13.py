@@ -21,6 +21,5 @@ for i, instruction in enumerate(instructions.split("\n")):
         paper = upper | lower[:,::-1]
     if i == 0:
         print("Part 1:", paper.sum())
-np.set_printoptions(linewidth=200)
 print(np.array2string(paper.T, separator="", 
                       formatter={'int': lambda x: ' ' if x==0 else '█'}))
